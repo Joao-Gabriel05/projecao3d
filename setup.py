@@ -14,6 +14,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 MODULE_SLUG = "projecao"
 
+
 setup(
     name=MODULE_SLUG,
     version="0.1.0",
