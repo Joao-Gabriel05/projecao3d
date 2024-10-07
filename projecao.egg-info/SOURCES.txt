@@ -1,0 +1,11 @@
+README.md
+setup.py
+projecao/__init__.py
+projecao/main.py
+projecao/my_lib.py
+projecao.egg-info/PKG-INFO
+projecao.egg-info/SOURCES.txt
+projecao.egg-info/dependency_links.txt
+projecao.egg-info/entry_points.txt
+projecao.egg-info/requires.txt
+projecao.egg-info/top_level.txt

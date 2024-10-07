@@ -1,0 +1,3 @@
+[console_scripts]
+projecao3d = projecao.main:app
+
