@@ -36,7 +36,7 @@ def app():
     posx = 0 # Posição em x controlado por "a" e "d"
     posy = 0 # Posição em y controlado por "w" e "s"
 
-    balls = 5 # Tamanho dos vértices
+    vertices = 5 # Tamanho dos vértices
 
 
     # Cor do cubo
@@ -96,12 +96,7 @@ def app():
                 if d >= 800:
                     d = 800
         
-        # Limita o tamanho dos vértices entre 1 e 8
-        balls = d//50
-        if balls < 1:
-            balls = 1
-        if balls > 8:
-            balls = 8
+        vertices = (d//50) +5
 
         keys = pygame.key.get_pressed() 
         # Controles de movimento
@@ -177,8 +172,8 @@ def app():
         # Projeção em perspectiva
         projecao = np.ones((3, 8))
         for i in range(8):
-            projecao[0][i] = X[1][i]/X[3][i]
-            projecao[1][i] = X[2][i]/X[3][i]
+            projecao[0][i] = X[1][i]/X[3][i]# xw divido por w
+            projecao[1][i] = X[2][i]/X[3][i]#yw divido por w
 
         projecao = translacao_xy @ projecao
 
@@ -219,14 +214,14 @@ def app():
         pygame.draw.line(tela, cor_cubo, (int(projecao[0][2]), int(projecao[1][2])), (int(projecao[0][6]), int(projecao[1][6])), width=3)
         pygame.draw.line(tela, cor_cubo, (int(projecao[0][3]), int(projecao[1][3])), (int(projecao[0][7]), int(projecao[1][7])), width=3)
         # Vértices
-        pygame.draw.circle(tela, cor_cubo, (int(projecao[0][0]), int(projecao[1][0])), balls)
-        pygame.draw.circle(tela, cor_cubo, (int(projecao[0][1]), int(projecao[1][1])), balls)
-        pygame.draw.circle(tela, cor_cubo, (int(projecao[0][2]), int(projecao[1][2])), balls)
-        pygame.draw.circle(tela, cor_cubo, (int(projecao[0][3]), int(projecao[1][3])), balls)
-        pygame.draw.circle(tela, cor_cubo, (int(projecao[0][4]), int(projecao[1][4])), balls)
-        pygame.draw.circle(tela, cor_cubo, (int(projecao[0][5]), int(projecao[1][5])), balls)
-        pygame.draw.circle(tela, cor_cubo, (int(projecao[0][6]), int(projecao[1][6])), balls)
-        pygame.draw.circle(tela, cor_cubo, (int(projecao[0][7]), int(projecao[1][7])), balls)
+        pygame.draw.circle(tela, cor_cubo, (int(projecao[0][0]), int(projecao[1][0])), vertices)
+        pygame.draw.circle(tela, cor_cubo, (int(projecao[0][1]), int(projecao[1][1])), vertices)
+        pygame.draw.circle(tela, cor_cubo, (int(projecao[0][2]), int(projecao[1][2])), vertices)
+        pygame.draw.circle(tela, cor_cubo, (int(projecao[0][3]), int(projecao[1][3])), vertices)
+        pygame.draw.circle(tela, cor_cubo, (int(projecao[0][4]), int(projecao[1][4])), vertices)
+        pygame.draw.circle(tela, cor_cubo, (int(projecao[0][5]), int(projecao[1][5])), vertices)
+        pygame.draw.circle(tela, cor_cubo, (int(projecao[0][6]), int(projecao[1][6])), vertices)
+        pygame.draw.circle(tela, cor_cubo, (int(projecao[0][7]), int(projecao[1][7])), vertices)
 
         # Atualiza a tela
         clock.tick(60)
